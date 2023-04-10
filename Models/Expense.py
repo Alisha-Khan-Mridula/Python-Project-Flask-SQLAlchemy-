@@ -1,5 +1,5 @@
 #============= Importing from Context.py =====================#
-from Models.Context import Column, datetime, Integer, Boolean, String, ForeignKey,BaseModel,DateTime,Base,ValidationError
+from Models.Context import Column, datetime, Integer, Boolean, String, ForeignKey,BaseModel,DateTime,Base
 
 
 #============ Expense Model Creation ================#

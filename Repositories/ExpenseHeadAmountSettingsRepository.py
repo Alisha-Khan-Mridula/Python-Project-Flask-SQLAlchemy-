@@ -1,6 +1,7 @@
 from Models.ExpenseHeadAmountSettings import ExpenseHeadAmountSettings
 from Models.Context import Session
+from .GenericRepository import GenericRepository
 
-class ExpenseHeadAmountSettingsRepository():
+class ExpenseHeadAmountSettingsRepository(GenericRepository):
     def __init__(self, db: Session) -> None:
-        self.db = db
+        super().__init__(db, ExpenseHeadAmountSettings)

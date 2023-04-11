@@ -24,10 +24,10 @@ Base = declarative_base()
 
 
 #==================== Connecting With the Server ===========================#
-server = "192.168.42.6"
-username = "sa"
-password = urllib.parse.quote_plus("e0LZ0G*#%B9)G9}P95")
-database = "AlishaMonthlyexpenseBill"
+server = *****
+username = ***
+password = *****
+database = *****
 
 connectionString = f"mssql+pyodbc://{username}:{password}@{server}/{database}?driver=Sql Server"
 engine = create_engine(connectionString, pool_recycle = 3600, echo=True, use_setinputsizes=False)

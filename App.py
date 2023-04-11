@@ -21,11 +21,11 @@ from DTO.ExpenseLocationDto import ExpenseLocationSaveDto
 
 
 session = Session()
-HeadService = ExpenseHeadServie(session)
-ExpService = ExpenseService(session)
-LocaService = ExpenseLocationServie(session)
-DetailsService = ExpenseDetailsServie(session)
-AmountService = ExpenseHeadAmountSettingsServie(session)
+# HeadService = ExpenseHeadServie(session)
+# ExpService = ExpenseService(session)
+# LocaService = ExpenseLocationServie(session)
+# DetailsService = ExpenseDetailsServie(session)
+# AmountService = ExpenseHeadAmountSettingsServie(session)
 
 #createDB()
 
@@ -96,13 +96,29 @@ AmountService = ExpenseHeadAmountSettingsServie(session)
 #     print(e.json())   
 
 
-expenseDate = date(2022,11,2)
-try:
-   data = ExpenseSaveDto(**{"EmployeeID": "oPL1747","ExpenseMonth": "2022-11-02","CheckedByID":"LPL109876","CreatedByID":"LPL08432"})
-   newItem = Expense().getAnObject(dict(data))
-   ExpService.save(newItem)
-except ValidationError as e:
-    print(e.json())   
+
+# try:
+#    data = ExpenseSaveDto(**{"EmployeeID": "PPL1747","ExpenseMonth": "2022-11-02","CheckedByID":"LPL109876","CreatedByID":"LPL08432"})
+#    newItem = Expense().getAnObject(dict(data))
+#    ExpService.save(newItem)
+# except ValidationError as e:
+#     print(e.json())    
+
+
+from flask import Flask
+from Controller.ExpenseHeadController import expHead
+
+app = Flask(__name__)
+
+app.register_blueprint(expHead)
+
+
+
+
+
+
+if __name__=="__main__":
+   app.run(debug=True, port=3200)
 
 
 

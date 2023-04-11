@@ -8,10 +8,10 @@ Entity = TypeVar('Entity')
 
 
 class GenericRepository(IGenericRepository):
-    def __init__(self, db: Session, modelType: type(Entity)):
+    def __init__(self, db: Session, modelType: type(Entity), schema: Schema):
         self.db = db
         self.modelType = modelType
-        # self.schema = schema  
+        self.schema = schema  
         
         
     def getByID(self, ID: int):
@@ -21,7 +21,8 @@ class GenericRepository(IGenericRepository):
         return self.db.query(self.modelType).filter_by(ID=ID).first()
     
     def getAll(self) ->List[Entity]:
-        return self.db.query(self.modelType).all()
+        data = self.db.query(self.modelType).all()
+        return [self.schema.load(self.schema.dump(item)) for item in data]
     
     def save(self, data: Entity) -> Entity:
         self.db.add(data)

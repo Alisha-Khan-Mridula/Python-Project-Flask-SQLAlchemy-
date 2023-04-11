@@ -31,10 +31,10 @@ Base = declarative_base()
 
 
 #==================== Connecting With the Server ===========================#
-server = *****
-username = ***
-password = *****
-database = *****
+server = " "
+username =" "
+password = " "
+database = " "
 
 connectionString = f"mssql+pyodbc://{username}:{password}@{server}/{database}?driver=Sql Server"
 engine = create_engine(connectionString, pool_recycle = 3600, echo=True, use_setinputsizes=False)

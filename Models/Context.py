@@ -19,6 +19,13 @@ class BaseModel():  # BaseModel class is the class of the common Fields of all t
     CreatedOn = Column(DateTime(), default=datetime.now)
     UpdatedByID = Column(String(10),nullable=True)
     UpdatedOn = Column(DateTime(),  onupdate=datetime.now)
+    
+    
+    def getAnObject(self, data: dict):
+        for column in data:
+            setattr(self, column, data[column])
+            print(self)
+        return self
 
 Base = declarative_base()
 

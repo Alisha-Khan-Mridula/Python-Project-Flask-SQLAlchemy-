@@ -13,6 +13,13 @@ from Services.ExpenseLocationService import ExpenseLocationServie
 from Services.ExpenseDetailsService import ExpenseDetailsServie
 from Services.ExpenseHeadAmountSettingsService import ExpenseHeadAmountSettingsServie
 
+
+from DTO.ExpenseHeadDto import ExpenseHeadSaveDto, ValidationError
+from DTO.ExpenseDto import ExpenseSaveDto,date
+from DTO.ExpenseDetailsDto import ExpenseDetailsSaveDto
+from DTO.ExpenseLocationDto import ExpenseLocationSaveDto
+
+
 session = Session()
 HeadService = ExpenseHeadServie(session)
 ExpService = ExpenseService(session)
@@ -69,6 +76,33 @@ AmountService = ExpenseHeadAmountSettingsServie(session)
 
 
 
+
+
+# try:
+#    data = ExpenseHeadSaveDto(**{"ID":"TS", "HeadName": "Test Another", "CreatedByID": "LPL02693"})
+#    newItem = ExpenseHead().getAnObject(dict(data))
+#    HeadService.save(newItem)
+# except ValidationError as e:
+#     print(e.json())   
+
+
+
+
+# try:
+#    data = ExpenseLocationSaveDto(**{"ID":"HP", "LocationName":"abcde", "ShortName":"Hotyuk", "CreatedByID":"LPL45"})
+#    newItem = ExpenseLocation().getAnObject(dict(data))
+#    LocaService.save(newItem)
+# except ValidationError as e:
+#     print(e.json())   
+
+
+expenseDate = date(2022,11,2)
+try:
+   data = ExpenseSaveDto(**{"EmployeeID": "oPL1747","ExpenseMonth": "2022-11-02","CheckedByID":"LPL109876","CreatedByID":"LPL08432"})
+   newItem = Expense().getAnObject(dict(data))
+   ExpService.save(newItem)
+except ValidationError as e:
+    print(e.json())   
 
 
 

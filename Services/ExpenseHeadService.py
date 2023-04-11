@@ -17,8 +17,8 @@ class ExpenseHeadServie(IService):
         return self.repo.getByID(id)
     
     def save(self, newExpenseHead: ExpenseHead) -> ExpenseHead:
-        if (len(newExpenseHead).ID==0 or newExpenseHead == " "):
-            raise ValueError("Invalid Expense Head ID")
+        # if (len(newExpenseHead).ID==0 or newExpenseHead == " "):
+        #     raise ValueError("Invalid Expense Head ID")
         
         return self.repo.save(newExpenseHead)
         

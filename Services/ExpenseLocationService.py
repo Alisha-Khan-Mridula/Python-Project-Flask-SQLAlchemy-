@@ -17,8 +17,8 @@ class ExpenseLocationServie(IService):
         return self.repo.getByID(id)
     
     def save(self, newExpenseLocation: ExpenseLocation) -> ExpenseLocation:
-        if (len(newExpenseLocation).ID==0 or newExpenseLocation == " "):
-            raise ValueError("Invalid Expense Head ID")
+        # if (len(newExpenseLocation).ID==0 or newExpenseLocation == " "):
+        #     raise ValueError("Invalid Expense Head ID")
         
         return self.repo.save(newExpenseLocation)
         

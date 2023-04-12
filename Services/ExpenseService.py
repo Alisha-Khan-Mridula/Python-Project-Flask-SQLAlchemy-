@@ -13,7 +13,7 @@ class ExpenseService(IService):
     def getAll(self) -> List[Expense]:
         return self.repo.getAll()
     
-    def getByID(self, id: str):
+    def getByID(self, id: int):
         return self.repo.getByID(id)
     
     def save(self, newExpense: Expense) -> Expense:
@@ -24,11 +24,12 @@ class ExpenseService(IService):
         
     
     def update(self, ExpenseUpdate: Expense):
-        # expense = self.repo.getByID(ExpenseUpdate.ID)
-        # expense.Head = ExpenseUpdate.HeadName
+        expense = self.repo.getByID(ExpenseUpdate.ID)
+        expense.EmployeeID = ExpenseUpdate.EmployeeID
+        expense.ExpenseMonth = ExpenseUpdate.ExpenseMonth
         
-        # return self.repo.update(expense)
-        pass
+        return self.repo.update(expense)
+        
 
     
     def delete(self, ID: int):

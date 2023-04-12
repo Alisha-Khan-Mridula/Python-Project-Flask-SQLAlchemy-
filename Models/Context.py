@@ -25,7 +25,7 @@ class BaseModel():  # BaseModel class is the class of the common Fields of all t
         for column in data:
             setattr(self, column, data[column])
             print(self)
-        return self
+        return self 
 
 Base = declarative_base()
 

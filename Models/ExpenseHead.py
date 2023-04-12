@@ -11,7 +11,8 @@ class ExpenseHead(Base,BaseModel):
     
 class ExpenseHeadSchema(Schema):
     ID = fields.Str()
-    HeadName = fields.Str()
+    #HeadName = fields.Str()
     CreatedByID = fields.Str()
+    #UpdatedByID = fields.Str()
     IsActive = fields.Boolean()
         

@@ -3,8 +3,9 @@ from datetime import datetime,date
 
 
 class ExpenseSaveDto(BaseModel):
+    ID: int
     EmployeeID: str = Field(min_length=7, max_length=20)
-    ExpenseMonth: str
+    ExpenseMonth: str =Field(default=None)
     CheckedByID: str = Field(max_length=10,default=None)
     VerifiedByID: str = Field(max_length=10, default=None)
     ForwardedByID:str = Field(max_length=10, default=None)
@@ -14,7 +15,7 @@ class ExpenseSaveDto(BaseModel):
     FAApprovedByID:str = Field(max_length=10, default=None)
     ManagementApprovedByID:str = Field(max_length=10, default=None)
     UpdatedByID:  str = Field(max_length=10, default=None)    
-    CreatedByID: str = Field(max_length=10) 
+    CreatedByID: str = Field(max_length=10, default=None) 
     
     
     

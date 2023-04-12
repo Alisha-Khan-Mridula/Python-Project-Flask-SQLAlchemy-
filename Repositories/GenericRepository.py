@@ -15,7 +15,9 @@ class GenericRepository(IGenericRepository):
         
         
     def getByID(self, ID: int):
-        return self.db.query(self.modelType).filter_by(ID=ID).first()
+        data= self.db.query(self.modelType).first()
+        return [self.schema.load(self.schema.dump(item)) for item in data]
+
     
     def getByID(self, ID: str):
         return self.db.query(self.modelType).filter_by(ID=ID).first()

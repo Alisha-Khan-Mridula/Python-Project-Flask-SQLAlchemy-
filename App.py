@@ -107,12 +107,17 @@ session = Session()
 
 from flask import Flask
 from Controller.ExpenseHeadController import expHead
-
+from Controller.ExpenseLocationController import expLocation
+from Controller.ExpenseController import exp
+from Controller.ExpenseHeadAmountSettingsController import expAmount
+from Controller.ExpenseDetailsController import expDetails
 app = Flask(__name__)
 
 app.register_blueprint(expHead)
-
-
+app.register_blueprint(expLocation)
+app.register_blueprint(exp)
+app.register_blueprint(expAmount)
+app.register_blueprint(expDetails)
 
 
 

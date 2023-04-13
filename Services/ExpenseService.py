@@ -13,7 +13,7 @@ class ExpenseService(IService):
     def getAll(self) -> List[Expense]:
         return self.repo.getAll()
     
-    def getByID(self, id: int):
+    def getByID(self, id: str):
         return self.repo.getByID(id)
     
     def save(self, newExpense: Expense) -> Expense:

@@ -39,3 +39,7 @@ def updateExpense():
 def deleteExpense(ID):
     ExpenseHeadAmountSettingsServie(Session()).delete(ID)
     return "Successfully Deleted"
+
+@expAmount.route('/expense/Amount/getID/<ID>', methods = ['GET'])
+def getByID(ID: str):
+    return ExpenseHeadAmountSettingsServie(Session()).getByID(ID)

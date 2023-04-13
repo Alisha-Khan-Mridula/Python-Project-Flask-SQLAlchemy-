@@ -38,3 +38,7 @@ def updateLocation():
 def deleteLocation(ID : str):
     ExpenseLocationServie(Session()).delete(ID)
     return "Delete Successfully"
+
+@expLocation.route('/expense/location/getID/<ID>', methods = ['GET'])
+def getByID(ID):
+    return ExpenseLocationServie(Session()).getByID(ID)

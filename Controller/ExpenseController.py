@@ -41,6 +41,6 @@ def deleteExpense(ID: int):
     ExpenseService(Session()).delete(ID)
     return "Successfully Deleted" 
 
-# @exp.route('/expense/getID/<ID>', methods = ['GET'])
-# def getByID(ID: int):
-#     return ExpenseService(Session()).getByID(ID)
+@exp.route('/expense/getID/<ID>', methods = ['GET'])
+def getByID(ID: int):
+    return ExpenseService(Session()).getByID(ID)

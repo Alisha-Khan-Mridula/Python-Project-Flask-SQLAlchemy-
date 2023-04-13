@@ -39,5 +39,9 @@ def deleteExpenseHead(ExpenseHeadID : str):
     ExpenseHeadServie(Session()).delete(ExpenseHeadID)
     return "Successfully Deleted"
 
+@expHead.route('/expense/head/getID/<ID>', methods = ['GET'])
+def getByID(ID):
+    return ExpenseHeadServie(Session()).getByID(ID)
+
  
         

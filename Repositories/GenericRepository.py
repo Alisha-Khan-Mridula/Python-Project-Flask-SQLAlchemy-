@@ -14,13 +14,14 @@ class GenericRepository(IGenericRepository):
         self.schema = schema  
         
         
-    def getByID(self, ID: int):
-        data= self.db.query(self.modelType).first()
-        return [self.schema.load(self.schema.dump(item)) for item in data]
+    # def getByID(self, ID: int):
+    #     data= self.db.query(self.modelType).filter_by(ID=ID).first()
+    #     return self.schema.dump(data)
 
     
     def getByID(self, ID: str):
-        return self.db.query(self.modelType).filter_by(ID=ID).first()
+       data= self.db.query(self.modelType).filter_by(ID=ID).first()
+       return self.schema.dump(data)
     
     def getAll(self) ->List[Entity]:
         data = self.db.query(self.modelType).all()

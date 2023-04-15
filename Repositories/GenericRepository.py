@@ -3,6 +3,7 @@
 from typing import TypeVar, List
 from Models.Context import Session, Base, Schema
 from .IGenericRepository import IGenericRepository
+from flask import json
 
 Entity = TypeVar('Entity')
 
@@ -22,6 +23,7 @@ class GenericRepository(IGenericRepository):
     def getByID(self, ID: str):
        data= self.db.query(self.modelType).filter_by(ID=ID).first()
        return self.schema.dump(data)
+  
     
     def getAll(self) ->List[Entity]:
         data = self.db.query(self.modelType).all()

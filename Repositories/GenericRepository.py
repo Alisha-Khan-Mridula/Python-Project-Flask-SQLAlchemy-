@@ -20,9 +20,15 @@ class GenericRepository(IGenericRepository):
     #     return self.schema.dump(data)
 
     
-    def getByID(self, ID: str):
+    def getByID(self, ID: str) -> Entity:
+    #    data= self.db.query(self.modelType).filter_by(ID=ID).first()
+    #    return self.schema.dump(data)
+     return self.db.query(self.modelType).filter_by(ID= ID).first()
+ 
+    def getID(self, ID: str) -> List[Entity]:
        data= self.db.query(self.modelType).filter_by(ID=ID).first()
        return self.schema.dump(data)
+ 
   
     
     def getAll(self) ->List[Entity]:

@@ -6,6 +6,13 @@ class ExpenseHeadSaveDto(BaseModel):
     CreatedByID: str
     UpdatedByID: str
     
+    
+class ExpenseUpdateDto(BaseModel):
+    ID: str = Field(min_length=2)
+    HeadName: str =Field(min_length=4, max_length=50)
+    UpdatedByID: str
+        
+    
    
     
   

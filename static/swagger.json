@@ -1,0 +1,291 @@
+{
+    "openapi": "3.0.0", 
+    "info": {
+      "description": "Monthly Expense Bill",
+      "version": "1.0.0",
+      "title": "Monthly Expense Bill",
+      "license": {
+        "name": "MIT",
+        "url": "https://opensource.org/licenses/MIT"
+      }
+    },
+    "tags": [
+        {
+          "name": "Expense Bill API",
+          "description": "Test API"
+        }],
+      
+      "servers": [
+        {
+        "url": "/"
+        }
+    ],
+    "components": {
+        "schemas": {
+            "ExpenseHead": {
+                "type": "object",
+                "properties": {
+                    "ID": {
+                    "type": "string"
+                    },
+                    "HeadName": {
+                    "type": "string"
+                    },
+                    "CreatedByID": {
+                     "type" : "string"   
+                 
+                    },
+                    "UpdatedByID": {
+                        "type":"string"
+                    }
+                }
+                },
+            "ExpenseLocation": {
+                "type": "object",
+                "properties": {
+                    "ID":{
+                    "type": "string"
+                },
+                    "LocationName": {
+                    "type": "string"
+                },
+                    "ShortName":{
+                    "type": "string"
+                },
+                     "CreatedByID":{
+                    "type": "string"
+                }
+                }
+            },
+            "ExpenseHeadAmountSettings":{
+                "type" : "object",
+                "properties": {
+                    "ID": {
+                        "type":"string"},
+                    "ExpenseHeadID": {
+                        "type":"string"},
+                    "ExpenseLocationID": {
+                        "type":"string"},
+                    "Designation": {
+                        "type":"string"},
+                    "Amount": {
+                        "type":"decimal"},
+                    "CreatedByID": {
+                        "type":"string"}
+                }
+            },
+            "ExpenseDetails":{
+                "type" : "object",
+                "properties":{
+                    "ID": {
+                        "type":"integer"},
+                    "ExpenseLocationID": {
+                        "type":"string"},
+                    "ExpenseDate": {
+                        "type":"datetime"},
+                    "LocationFrom": {
+                        "type":"string"},
+                    "LocationTo": {
+                        "type":"string"},
+                    "ExpenseHeadID": {
+                            "type":"string"},
+                    "ModeOfTransport": {
+                                "type":"string"},
+                
+                    "CreatedByID": {
+                        "type":"string"}
+                    
+                }
+            },
+            "Expense": {
+                "type": "object",
+                "properties": {
+                    "ID": {
+                        "type":"integer"},
+                    "EmployeeID": {
+                        "type":"string"},
+                    "ExpenseMonth": {
+                        "type":"datetime"},
+                    "CheckedByID": {
+                        "type":"string"},
+                    "VerifiedByID": {
+                        "type":"string"},
+                    "ForwardedByID": {
+                            "type":"string"},
+                    "RecommendedByID": {
+                            "type":"string"},
+                    "ApprovedByID": {
+                            "type":"string"},
+                    "FCAApprovedByID": {
+                            "type":"string"},
+                    "FAApprovedByID": {
+                            "type":"string"},
+                    "ManagementApprovedByID": {
+                            "type":"string"},
+                    "ModeOfTransport": {
+                            "type":"string"},
+                
+                    "CreatedByID": {
+                        "type":"string"}
+                }
+            }
+            }
+        },
+        "paths": {
+            "/expense/head/save": {
+                "post": {
+                "tags": [
+                    "Add  ExpenseHead"
+                ],
+                "summary": "Add ExpenseHead in Database",
+                "requestBody": {
+                "description": "Add new Expensehead in Database",
+                "required": true,
+                "content": {
+                    "application/json": {
+                    "schema": {
+                        "$ref": "#/components/schemas/ExpenseHead"
+                        }
+                    }
+                }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                        "$ref": "#/components/schemas/ExpenseHead"
+                        }
+                    },
+                    "404": {
+                        "description": "NOT FOUND",
+                        "schema": {
+                        "$ref": "#/components/schemas/ExpenseHead"
+                        }
+                }
+                }
+                }
+            },
+            "/expense/head/list": {
+
+                    "get" :{
+                       "tags": [
+                        "Get All ExpenseHead from Database"
+                      ],
+                       "summary": "Get All ExpenseHead",
+                       
+                   
+                       "responses": {
+                       "200": {
+                        "description": "OK",
+                        "schema": {
+                        "$ref": "#/components/schemas/ExpenseHead"
+                        }
+                        },
+                    "404": {
+                        "description": "NOT FOUND",
+                        "schema": {
+                        "$ref": "#/components/schemas/ExpenseHead"
+                        }
+                }
+                }
+                }
+            },
+    
+            
+            "/expense/head/update": {
+                "put" :{
+                    "tags": [
+                        "Update ExpenseHead in Database"
+                      ],
+                       "summary": "Update ExpenseHead",
+                      
+                        "parameters": [{
+                            "name": "object",
+                            "in": "path",
+                            "description": "Update by ID",
+                            "required": true,
+                            "type": "object",
+                            "schema" : {
+                                "$ref": "#/components/schemas/ExpenseHead"
+                            }
+                        }],
+
+
+                     
+                       "requestBody": {
+                        "description": "Update Expensehead in Database",
+                        "required" : true,
+                        "content": {
+                            "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ExpenseHead"
+                                }
+                            }
+                        }
+                        },
+                        
+                   
+                       "responses": {
+                       "200": {
+                        "description": "OK",
+                        "schema": {
+                        "$ref": "#/components/schemas/ExpenseHead"
+                        }
+                        },
+                       "404": {
+                        "description": "NOT FOUND",
+                        "schema": {
+                        "$ref": "#/components/schemas/ExpenseHead"
+                        }
+                }
+                }
+
+                }
+
+            },
+
+            "/expense/head/delete/{ExpenseHeadID}" : {
+                "delete":{
+                    "tags": [
+                        "Delete ExpenseHead"
+                      ],
+                       "summary": "Delete ExpenseHead",
+                      
+                        "parameters": [{
+                            "name": "id",
+                            "in": "path",
+                            "description": "Delete by ID",
+                            "required": true,
+                            "type": "string",
+                            "schema" : {
+                                "$ref": "#/components/schemas/ID"
+                            }
+                        }],
+                        
+
+
+                     
+                        
+                   
+                       "responses": {
+                       "200": {
+                        "description": "OK",
+                        "schema": {
+                        "$ref": "#/components/schemas/ExpenseHead"
+                        }
+                        },
+                       "404": {
+                        "description": "NOT FOUND",
+                        "schema": {
+                        "$ref": "#/components/schemas/ExpenseHead"
+                        }
+                }
+                }
+
+                }
+            }
+        }
+    
+}
+
+

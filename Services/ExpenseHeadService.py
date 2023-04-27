@@ -26,8 +26,8 @@ class ExpenseHeadServie(IService):
     def update(self, ExpenseHeadUpdate: ExpenseHead):
         expenseHead = self.repo.getByID(ExpenseHeadUpdate.ID)
         expenseHead.HeadName = ExpenseHeadUpdate.HeadName
-        expenseHead.CreatedByID = ExpenseHeadUpdate.CreatedByID
-        expenseHead.UpdatedByID = ExpenseHeadUpdate.UpdatedByID
+        #expenseHead.CreatedByID = ExpenseHeadUpdate.CreatedByID
+        #expenseHead.UpdatedByID = ExpenseHeadUpdate.UpdatedByID
         
         return self.repo.update(expenseHead)
 

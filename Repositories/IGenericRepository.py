@@ -9,11 +9,11 @@ Entity = TypeVar('Entity', bound = Base)
 class IGenericRepository(ABC):
     
     @abstractmethod
-    def getByID(self, id:int) -> Entity:
+    def getByID(self, id:str) -> Entity:
         pass
 
     @abstractmethod
-    def getByID(self, id: str) -> Entity:
+    def getByID(self, id: str) -> List[Entity]:
         pass
 
     @abstractmethod

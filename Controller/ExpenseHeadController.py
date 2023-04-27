@@ -1,6 +1,6 @@
 from Models.Context import Blueprint, request, Session
 from Models.ExpenseHead import ExpenseHead
-from DTO.ExpenseHeadDto import ExpenseHeadSaveDto, ValidationError 
+from DTO.ExpenseHeadDto import ExpenseHeadSaveDto, ValidationError , ExpenseUpdateDto
 from Services.ExpenseHeadService import ExpenseHeadServie
 
 expHead = Blueprint('expHead', __name__)
@@ -25,7 +25,7 @@ def saveExpense():
 @expHead.route('/expense/head/update', methods =['PUT'])
 def updateExpenseHead():
     try:
-        validatioDto = ExpenseHeadSaveDto(**request.json)
+        validatioDto = ExpenseUpdateDto(**request.json)
     except ValidationError as e:
         return e.json()
     

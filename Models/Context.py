@@ -17,7 +17,7 @@ class BaseModel():  # BaseModel class is the class of the common Fields of all t
     IsActive = Column(Boolean, default=True)
     CreatedByID = Column(String(10), nullable=False)
     CreatedOn = Column(DateTime(), default=datetime.now)
-    UpdatedByID = Column(String(10),nullable=True)
+    UpdatedByID = Column(String(10))
     UpdatedOn = Column(DateTime(),  onupdate=datetime.now)
     
     

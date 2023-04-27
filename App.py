@@ -120,6 +120,20 @@ app.register_blueprint(expAmount)
 app.register_blueprint(expDetails)
 
 
+#API Documentation using Swagger
+
+from flask_swagger_ui import get_swaggerui_blueprint
+SWAGGER_URL = '/swagger'
+API_URL = '/static/swagger.json'
+SWAGGER_BLUEPRINT = get_swaggerui_blueprint(
+    SWAGGER_URL,
+    API_URL,
+    config = {
+        'app_name' : "Monthly Expense Bill API"
+    }
+)
+
+app.register_blueprint(SWAGGER_BLUEPRINT, url_prefix = SWAGGER_URL)
 
 
 if __name__=="__main__":

@@ -11,8 +11,20 @@
     },
     "tags": [
         {
-          "name": "Expense Bill API",
-          "description": "Test API"
+          "name": "Expense Head",
+          "description": ""
+        },
+        {
+           "name": "Expense Location"
+        },
+    {
+        "name": "Expense Details"
+    },
+        {
+            "name": "Expense Head Amount Settings"
+        },
+        {
+            "name": "Expense"
         }],
       
       "servers": [
@@ -135,7 +147,7 @@
             "/expense/head/save": {
                 "post": {
                 "tags": [
-                    "Add  ExpenseHead"
+                    "Expense Head"
                 ],
                 "summary": "Add ExpenseHead in Database",
                 "requestBody": {
@@ -169,7 +181,7 @@
 
                     "get" :{
                        "tags": [
-                        "Get All ExpenseHead from Database"
+                        "Expense Head"
                       ],
                        "summary": "Get All ExpenseHead",
                        
@@ -195,7 +207,7 @@
             "/expense/head/update": {
                 "put" :{
                     "tags": [
-                        "Update ExpenseHead in Database"
+                        "Expense Head"
                       ],
                        "summary": "Update ExpenseHead",
                       
@@ -247,9 +259,9 @@
             "/expense/head/delete/{ExpenseHeadID}" : {
                 "delete":{
                     "tags": [
-                        "Delete ExpenseHead"
+                        "Expense Head"
                       ],
-                       "summary": "Delete ExpenseHead",
+                       "summary": "Delete ExpenseLocation",
                       
                         "parameters": [{
                             "name": "id",
@@ -283,7 +295,172 @@
                 }
 
                 }
+            },
+
+
+
+
+
+
+
+
+
+
+
+            "/location/save": {
+                "post": {
+                "tags": [
+                    "Expense Location"
+                ],
+                "summary": "Add ExpenseHead in Database",
+                "requestBody": {
+                "description": "Add new Expensehead in Database",
+                "required": true,
+                "content": {
+                    "application/json": {
+                    "schema": {
+                        "$ref": "#/components/schemas/ExpenseLocation"
+                        }
+                    }
+                }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                        "$ref": "#/components/schemas/ExpenseLocation"
+                        }
+                    },
+                    "404": {
+                        "description": "NOT FOUND",
+                        "schema": {
+                        "$ref": "#/components/schemas/ExpenseExpenseLocationHead"
+                        }
+                }
+                }
+                }
+            },
+            "/location/list": {
+
+                    "get" :{
+                       "tags": [
+                        "Expense Location"
+                      ],
+                       "summary": "Get All ExpenseLocation",
+                       
+                   
+                       "responses": {
+                       "200": {
+                        "description": "OK",
+                        "schema": {
+                        "$ref": "#/components/schemas/ExpenseLocation"
+                        }
+                        },
+                    "404": {
+                        "description": "NOT FOUND",
+                        "schema": {
+                        "$ref": "#/components/schemas/ExpenseLocation"
+                        }
+                }
+                }
+                }
+            },
+    
+            
+            "/location/update": {
+                "put" :{
+                    "tags": [
+                        "Expense Location"
+                      ],
+                       "summary": "Update ExpenseLocation",
+                      
+                        "parameters": [{
+                            "name": "object",
+                            "in": "path",
+                            "description": "Update by ID",
+                            "required": true,
+                            "type": "object",
+                            "schema" : {
+                                "$ref": "#/components/schemas/ExpenseLocation"
+                            }
+                        }],
+
+
+                     
+                       "requestBody": {
+                        "description": "Update Expensehead in Database",
+                        "required" : true,
+                        "content": {
+                            "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ExpenseLocation"
+                                }
+                            }
+                        }
+                        },
+                        
+                   
+                       "responses": {
+                       "200": {
+                        "description": "OK",
+                        "schema": {
+                        "$ref": "#/components/schemas/ExpenseLocation"
+                        }
+                        },
+                       "404": {
+                        "description": "NOT FOUND",
+                        "schema": {
+                        "$ref": "#/components/schemas/ExpenseLocation"
+                        }
+                }
+                }
+
+                }
+
+            },
+
+            "/location/delete/{ID}" : {
+                "delete":{
+                    "tags": [
+                        "Expense Location"
+                      ],
+                       "summary": "Delete ExpenseHead",
+                      
+                        "parameters": [{
+                            "name": "id",
+                            "in": "path",
+                            "description": "Delete by ID",
+                            "required": true,
+                            "type": "string",
+                            "schema" : {
+                                "$ref": "#/components/schemas/ID"
+                            }
+                        }],
+                        
+
+
+                     
+                        
+                   
+                       "responses": {
+                       "200": {
+                        "description": "OK",
+                        "schema": {
+                        "$ref": "#/components/schemas/ExpenseLocation"
+                        }
+                        },
+                       "404": {
+                        "description": "NOT FOUND",
+                        "schema": {
+                        "$ref": "#/components/schemas/ExpenseLocation"
+                        }
+                }
+                }
+
+                }
             }
+
+
         }
     
 }

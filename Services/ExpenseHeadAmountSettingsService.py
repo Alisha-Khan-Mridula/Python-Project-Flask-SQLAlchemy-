@@ -17,8 +17,8 @@ class ExpenseHeadAmountSettingsServie(IService):
         return self.repo.getByID(id)
     
     def save(self, newExpenseHeadAmount: ExpenseHeadAmountSettings) -> ExpenseHeadAmountSettings:
-        if (len(newExpenseHeadAmount).ID==0 or newExpenseHeadAmount == " "):
-            raise ValueError("Invalid Expense Expense Head Amount Settings ID")
+        #if (len(newExpenseHeadAmount).ID==0 or newExpenseHeadAmount == " "):
+         #   raise ValueError("Invalid Expense Expense Head Amount Settings ID")
         
         return self.repo.save(newExpenseHeadAmount)
         
@@ -26,6 +26,9 @@ class ExpenseHeadAmountSettingsServie(IService):
     def update(self, ExpenseHeadAmountUpdate: ExpenseHeadAmountSettings):
         expenseAmount = self.repo.getByID(ExpenseHeadAmountUpdate.ID)
         expenseAmount.Designation = ExpenseHeadAmountUpdate.Designation
+        #expenseAmount.Amount = ExpenseHeadAmountUpdate.Amount
+        #print(expenseAmount.Amount)
+        #print(ExpenseHeadAmountUpdate.Amount)
         
         return self.repo.update(expenseAmount)
 

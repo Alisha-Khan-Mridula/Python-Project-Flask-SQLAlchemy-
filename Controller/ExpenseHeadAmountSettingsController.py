@@ -1,5 +1,5 @@
 from Models.ExpenseHeadAmountSettings import ExpenseHeadAmountSettings
-from DTO.ExpenseHeadAmountSettingsDto import ExpenseHeadAmountSaveDto, ValidationError
+from DTO.ExpenseHeadAmountSettingsDto import ExpenseHeadAmountSaveDto, ValidationError, ExpenseHeadAmountUpdateDto
 from Models.Context import request, Blueprint, Session
 from Services.ExpenseHeadAmountSettingsService import ExpenseHeadAmountSettingsServie
 
@@ -25,7 +25,7 @@ def saveExpense():
 def updateExpense():
     try:
        
-        validatioDto = ExpenseHeadAmountSaveDto(**request.json)
+        validatioDto = ExpenseHeadAmountUpdateDto(**request.json)
     except ValidationError as e:
         return e.json()
     

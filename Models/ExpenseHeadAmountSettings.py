@@ -8,8 +8,8 @@ class ExpenseHeadAmountSettings(Base,BaseModel):
     ID = Column(String(10), primary_key=True)
     ExpenseHeadID = Column(String(10), ForeignKey('ExpenseHead.ID'))
     ExpenseLocationID = Column(String(10), ForeignKey('ExpenseLocation.ID'))
-    Designation = Column(String(50))
-    Amount = Column(DECIMAL)
+    Designation = Column(String(50), nullable=False)
+    Amount = Column(Integer, nullable=False)
     
     
 class ExpenseHeadAmountSettingsSchema(Schema):
@@ -17,6 +17,6 @@ class ExpenseHeadAmountSettingsSchema(Schema):
     ExpenseHeadID = fields.Str()
     ExpenseLocationID = fields.Str()
     Designation = fields.Str()
-    Amount = fields.Decimal()
+    Amount = fields.Integer()
     CreatedByID = fields.Str()
          

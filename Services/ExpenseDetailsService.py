@@ -13,19 +13,19 @@ class ExpenseDetailsServie(IService):
     def getAll(self) -> List[ExpenseDetails]:
         return self.repo.getAll()
     
-    def getByID(self, id: str):
+    def getByID(self, id: int):
         return self.repo.getByID(id)
     
     def save(self, newExpenseDetails: ExpenseDetails) -> ExpenseDetails:
-        if (len(newExpenseDetails).ID==0 or newExpenseDetails == " "):
-            raise ValueError("Invalid Expense Details ID")
+        #if (len(newExpenseDetails).ID==0 or newExpenseDetails == " "):
+         #   raise ValueError("Invalid Expense Details ID")
         
         return self.repo.save(newExpenseDetails)
         
     
     def update(self, ExpenseDetailsUpdate: ExpenseDetails):
         expenseDetails = self.repo.getByID(ExpenseDetailsUpdate.ID)
-        expenseDetails.locationFrom = ExpenseDetailsUpdate.LocationFrom
+        expenseDetails.LocationFrom = ExpenseDetailsUpdate.LocationFrom
         
         return self.repo.update(expenseDetails)
 

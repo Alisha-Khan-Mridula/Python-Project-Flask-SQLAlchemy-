@@ -1,5 +1,5 @@
 from Models.ExpenseDetails import ExpenseDetails
-from DTO.ExpenseDetailsDto import ExpenseDetailsSaveDto, ValidationError
+from DTO.ExpenseDetailsDto import ExpenseDetailsSaveDto, ValidationError, ExpenseDetailsUpdateDto
 from Models.Context import request, Blueprint, Session
 from Services.ExpenseDetailsService import ExpenseDetailsServie
 
@@ -16,7 +16,7 @@ def saveExpense():
     except ValidationError as e:
         return e.json()
     
-    data = ExpenseDetailsSaveDto().getAnObject(dict(validatioDto)) 
+    data = ExpenseDetails().getAnObject(dict(validatioDto)) 
     ExpenseDetailsServie(Session()).save(data)   
     
     return "Successfully Saved"
@@ -25,11 +25,11 @@ def saveExpense():
 def updateExpense():
     try:
        
-        validatioDto = ExpenseDetailsSaveDto(**request.json)
+        validatioDto = ExpenseDetailsUpdateDto(**request.json)
     except ValidationError as e:
         return e.json()
     
-    data = ExpenseDetailsSaveDto().getAnObject(dict(validatioDto))
+    data = ExpenseDetails().getAnObject(dict(validatioDto))
     ExpenseDetailsServie(Session()).update(data)
     
     return "Successfully Updated"

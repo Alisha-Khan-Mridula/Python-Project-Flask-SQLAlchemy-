@@ -18,7 +18,7 @@ class Expense(Base,BaseModel):
     RecommendedByID = Column(String(10), nullable=True)
     RecommendedOn = Column(DateTime())
     ApprovedByID = Column(String(10), nullable=True)
-    ApprovedOn = Column(DateTime(),onupdate=datetime.now)
+    ApprovedOn = Column(DateTime())
     FCAApprovedByID = Column(String(10), nullable=True)
     FCAApprovedOn = Column(DateTime())
     FAApprovedByID = Column(String(10), nullable=True)

@@ -26,7 +26,7 @@ class ExpenseService(IService):
     def update(self, ExpenseUpdate: Expense):
         expense = self.repo.getByID(ExpenseUpdate.ID)
         expense.EmployeeID = ExpenseUpdate.EmployeeID
-        expense.ExpenseMonth = ExpenseUpdate.ExpenseMonth
+        #expense.ExpenseMonth = ExpenseUpdate.ExpenseMonth
         
         return self.repo.update(expense)
         

@@ -5,13 +5,13 @@ class Config(object):
     
 class DevelopmentConfig(Config):
     DEBUG = True
-    DATABASE_URI = "sqlite://dev.db"
+    DATABASE_URI = "sqlite:///database/dev.db"
 
 class TestingConfig(Config):
     DEBUG = True
     TESTING = True
-    DATABASE_URI = "sqlite://testing.db"
+    DATABASE_URI = "sqlite:///database/test.db"
     
 class ProductionConfig(Config):
-    DATABASE_URI = "sqlite://data.db"
+    DATABASE_URI = "sqlite:///database/data.db"
         

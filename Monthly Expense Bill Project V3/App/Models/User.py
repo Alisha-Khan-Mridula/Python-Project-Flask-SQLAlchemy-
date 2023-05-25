@@ -1,4 +1,4 @@
-from Models.BaseModel import BaseModel
+from .BaseModel import BaseModel
 #from Models.BaseModel import Base
 from App.database import Base
 from sqlalchemy import String, Boolean, Integer, DateTime, Column

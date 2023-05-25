@@ -2,12 +2,17 @@ from flask import Flask
 
 import os
 from App.database import registerDatabase, createTables
+from App.Models.User import User 
+
+# from App.Models.BaseModel import createTables
+
 
 
 
 def createApp() -> Flask:
-    app = Flask(__name__)
     
+    app = Flask(__name__)
+
     ## Register Configuration
     registerConfiguration(app)
     
@@ -31,7 +36,7 @@ def createApp() -> Flask:
     
     
     
-    ## Route for create database 
+    # ## Route for create database 
     @app.route('/create/db', methods = ['GET'])
     def createDB():
         createTables()
@@ -40,6 +45,9 @@ def createApp() -> Flask:
          
     
     return app
+
+
+
 
 
 

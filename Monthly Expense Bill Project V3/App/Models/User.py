@@ -5,7 +5,7 @@ from sqlalchemy import String, Boolean, Integer, DateTime, Column
 from datetime import datetime
 
 
-
+print("From User")
 
 
 class User(Base, BaseModel):

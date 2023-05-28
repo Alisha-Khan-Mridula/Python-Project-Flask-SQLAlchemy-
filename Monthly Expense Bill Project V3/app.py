@@ -1,11 +1,6 @@
 from flask import Flask
-
 import os
 from App.database import registerDatabase, createTables
-from App.Models.User import User 
-
-# from App.Models.BaseModel import createTables
-
 
 
 

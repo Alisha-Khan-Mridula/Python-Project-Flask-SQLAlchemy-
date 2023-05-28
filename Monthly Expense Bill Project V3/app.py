@@ -30,6 +30,7 @@ def createApp() -> Flask:
     
     
     
+    registerBlueprint(app)
     
     # ## Route for create database 
     @app.route('/create/db', methods = ['GET'])
@@ -43,7 +44,9 @@ def createApp() -> Flask:
 
 
 
-
+def registerBlueprint(app):
+    from App.Controller.UserController import user 
+    app.register_blueprint(user)
 
 
 def registerConfiguration(app) -> Flask:
@@ -61,3 +64,8 @@ def registerConfiguration(app) -> Flask:
     
     
 app = createApp()
+
+
+
+
+

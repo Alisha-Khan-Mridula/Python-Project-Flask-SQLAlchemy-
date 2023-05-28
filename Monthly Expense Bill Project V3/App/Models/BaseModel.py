@@ -6,7 +6,7 @@ from sqlalchemy.orm import session, sessionmaker, scoped_session, declarative_ba
 
 class BaseModel():
     IsActive = Column(Boolean, default=True)
-    CreatedByID = Column(String(10), nullable=False)
+    CreatedByID = Column(String(10))
     CreatedOn = Column(DateTime, default=datetime.now)
     UpdatedByID = Column(String(10))
     UpdatedOn = Column(DateTime, onupdate=datetime.now)

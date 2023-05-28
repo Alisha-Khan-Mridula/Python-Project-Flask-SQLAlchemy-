@@ -1,6 +1,6 @@
 from .GenericRepository import GenericRepository 
-from Models.User import User
-from database import Session
+from App.Models.User import User
+from App.database import Session
 
 class UserRepository(GenericRepository):
     def __init__(self, db: Session):

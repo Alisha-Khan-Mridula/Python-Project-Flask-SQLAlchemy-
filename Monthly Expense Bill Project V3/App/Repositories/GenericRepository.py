@@ -1,5 +1,5 @@
 from .IGenericRepository import IGenericRepository
-from database import Session
+from App.database import Session
 from typing import TypeVar, List
 
 Entity = TypeVar('Entity')
@@ -23,7 +23,10 @@ class GenericRepository(IGenericRepository):
         pass 
     
     def getAll(self) -> list[Entity]:
-        pass
+        data = self.db.query(self.modelType).all()
+        for i in data:
+            print(i.ID, i.username, i.passward)
+        return "Showed"
     
     def update(self, entity:Entity) -> Entity:
         pass

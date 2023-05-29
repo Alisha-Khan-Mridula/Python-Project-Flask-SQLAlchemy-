@@ -26,10 +26,10 @@ class IGenericRepository(ABC):
     def update(self, entity:Entity) -> Entity:
         pass
     
-    @abstractmethod
-    def delete(self, entity:Entity) -> None:
-        pass
+    # @abstractmethod
+    # def delete(self, entity:Entity) -> None:
+    #     pass
     
     @abstractmethod
-    def delete(self, id:int) -> None:
+    def deleteData(self, id:int) -> None:
         pass

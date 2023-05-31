@@ -1,42 +1,39 @@
 from .IGenericRepository import IGenericRepository
-from App.database import Session
+from App.database import session, Base
 from typing import TypeVar, List
-from App.Models.BaseModel import Schema
+#from App.Models.BaseModel import Schema
 from App.Models.User import User
 
-Entity = TypeVar('Entity')
+Entity = TypeVar('Entity', bound = Base)
 
 class GenericRepository(IGenericRepository):
-    def __init__(self, db: Session, modelType: type(Entity), schema: Schema):
-        self.db = db
+    def __init__(self, modelType: type(Entity)):
+        #self.db = db
         self.modelType = modelType
-        self.schema = schema
+        #self.schema = schema
         
     def save(self, data: Entity) ->Entity:
-        self.db.add(data)
-        self.db.commit()
-        self.db.refresh(data)
+        session.add(data)
+        session.commit()
+        session.refresh(data)
         return data
     
     ### Used to do delete. Only returthe ID but not in json formate 
     def getByIDFirst(self, id: int) -> Entity:
-        return self.db.query(self.modelType).filter_by(ID = id).first()
+        return session.query(self.modelType).filter_by(ID = id).first()
     
     def getByID(self, id: str) -> List[Entity]:
-       data= self.db.query(self.modelType).filter_by(ID=id).first()
-       return self.schema.dump(data) 
+       #data= session.query(self.modelType).filter_by(ID=id).first()
+       return session.query(self.modelType).filter_by(ID=id).first() 
     
     def getAll(self) -> List[Entity]:
-        data = self.db.query(self.modelType).all()
-        # for i in data:
-        #     print(i.ID, i.username, i.passward)
-        return [self.schema.load(self.schema.dump(item)) for item in data]
+        return session.query(self.modelType).all()
     
     def update(self,  userUpdate : User) -> Entity:
-        data = self.db.query(self.modelType).filter_by(ID = userUpdate.ID).first()
+        data = session.query(self.modelType).filter_by(ID = userUpdate.ID).first()
         data.password = userUpdate.password
-        self.db.commit()
-        self.db.refresh(data)
+        session.commit()
+        session.refresh(data)
 
     
     # def delete(self, entity:Entity) -> None:
@@ -44,5 +41,5 @@ class GenericRepository(IGenericRepository):
     #     self.db.commit()
     
     def deleteData(self, id:int) -> None:
-        self.db.query(self.modelType).filter_by(ID = id).delete()
-        self.db.commit()    
+        session.query(self.modelType).filter_by(ID = id).delete()
+        session.commit()    

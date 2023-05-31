@@ -1,8 +1,8 @@
 from .GenericRepository import GenericRepository 
-from App.Models.User import User, UserSchema
-from App.database import Session
-from App.Models.BaseModel import Schema
+from App.Models.User import User
 
 class UserRepository(GenericRepository):
-    def __init__(self, db: Session):
-        super().__init__(db, User, UserSchema())
+    
+    
+    def __init__(self):
+        super().__init__(User)

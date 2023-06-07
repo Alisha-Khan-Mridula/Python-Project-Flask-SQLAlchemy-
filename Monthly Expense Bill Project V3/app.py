@@ -1,12 +1,14 @@
-from flask import Flask
+from flask import Flask, request, jsonify
 import os
 from App.database import registerDatabase, createTables
+#from flask_jwt import JWT
 
 
+
+app = Flask(__name__)
 
 def createApp() -> Flask:
-    
-    app = Flask(__name__)
+
 
     ## Register Configuration
     registerConfiguration(app)
@@ -21,6 +23,8 @@ def createApp() -> Flask:
     
     
     ## Register JWT
+    #registerJWT(app)
+    
     
     ## Register CORS
     
@@ -38,7 +42,11 @@ def createApp() -> Flask:
         createTables()
         
         return{"Message":"Database created successfully"},200
-         
+    
+    
+    
+    
+    
     
     return app
 
@@ -60,10 +68,20 @@ def registerConfiguration(app) -> Flask:
     app.config.from_object(configInfo)
     #print(f"Debug: {app.config.get('DEBUG')}")
     
+# def registerJWT(app: Flask) -> None:
+#     from App.authentication import authenticate, indetity
+    
+#     app.secret_key = app.config.get("SECRET_KEY")
+    
+#     app.config.update(
+#         jwt = JWT(app, authenticate, indetity)
+#     )
+
+    
+   
     
     
-    
-app = createApp()
+createApp()
 
 
 

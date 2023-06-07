@@ -20,17 +20,17 @@ class GenericRepository(IGenericRepository):
     
     ### Used to do delete. Only returthe ID but not in json formate 
     def getByIDFirst(self, id: int) -> Entity:
-        return session.query(self.modelType).filter_by(ID = id).first()
+        return session.query(self.modelType).filter_by(id = id).first()
     
-    def getByID(self, id: str) -> List[Entity]:
+    def getByID(self, ID: str) -> List[Entity]:
        #data= session.query(self.modelType).filter_by(ID=id).first()
-       return session.query(self.modelType).filter_by(ID=id).first() 
+       return session.query(self.modelType).filter_by(id=ID).first() 
     
     def getAll(self) -> List[Entity]:
         return session.query(self.modelType).all()
     
     def update(self,  userUpdate : User) -> Entity:
-        data = session.query(self.modelType).filter_by(ID = userUpdate.ID).first()
+        data = session.query(self.modelType).filter_by(id = userUpdate.ID).first()
         data.password = userUpdate.password
         session.commit()
         session.refresh(data)
@@ -41,5 +41,5 @@ class GenericRepository(IGenericRepository):
     #     self.db.commit()
     
     def deleteData(self, id:int) -> None:
-        session.query(self.modelType).filter_by(ID = id).delete()
+        session.query(self.modelType).filter_by(id = id).delete()
         session.commit()    

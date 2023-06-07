@@ -12,13 +12,13 @@ print("From User")
 class User(Base, BaseModel):
     __tablename__ = 'User'
     
-    ID = Column(Integer, primary_key=True, autoincrement=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     username = Column(String(50), unique=True)
     password = Column(String(50))
     
     
 class UserSchema(Schema):
-    ID = fields.Int()
+    id = fields.Int()
     username = fields.Str()
     password = fields.Str()
     IsActive = fields.Bool()

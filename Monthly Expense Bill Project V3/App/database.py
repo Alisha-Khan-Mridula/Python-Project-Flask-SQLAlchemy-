@@ -18,4 +18,8 @@ def registerDatabase(app) -> None:
 def createTables():
     from .Models.User import User
     Base.metadata.create_all(bind=engine)
+    
+    from .Repositories.UserRepository import UserRepository
+    # newUser = User("Alisha","123456")
+    # UserRepository().save(newUser)
                 

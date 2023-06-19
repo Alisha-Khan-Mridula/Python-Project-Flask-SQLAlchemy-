@@ -17,6 +17,11 @@ def registerDatabase(app) -> None:
     
 def createTables():
     from .Models.User import User
+    from .Models.EpenseHead import ExpenseHead
+    from .Models.Expense import Expense
+    from .Models.ExpenseDetails import ExpenseDetails
+    from .Models.ExpenseHeadAmountSettings import ExpenseHeadAmountSettings
+    from .Models.ExpenseLocation import ExpenseLocation
     Base.metadata.create_all(bind=engine)
     
     from .Repositories.UserRepository import UserRepository

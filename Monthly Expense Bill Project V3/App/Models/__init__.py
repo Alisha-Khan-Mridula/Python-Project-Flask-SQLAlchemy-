@@ -2,7 +2,11 @@ print("From Models")
 
 from .BaseModel import BaseModel
 from .User import User
-#from .ExpenseHead import ExpenseHead
+from .ExpenseLocation import ExpenseLocation
+from .EpenseHead import ExpenseHead
+from .ExpenseDetails import ExpenseDetails
+from .ExpenseHeadAmountSettings import ExpenseHeadAmountSettings
+from .Expense import Expense
 
 
 
